@@ -65,15 +65,15 @@ def retrieval_qa_chain(llm, prompt, vectorstore):
 
 
 def qa_bot():
-    # embeddings = FastEmbedEmbeddings(model_name="BAAI/bge-small-en-v1.5")
-    model_name = "BAAI/bge-m3"
-    encode_kwargs = {'normalize_embeddings': True} # set True to compute cosine similarity
+    embeddings = FastEmbedEmbeddings(model_name="BAAI/bge-small-en-v1.5")
+    #model_name = "BAAI/bge-m3"
+    #encode_kwargs = {'normalize_embeddings': True} # set True to compute cosine similarity
 
-    embeddings = HuggingFaceBgeEmbeddings(
-        model_name=model_name,
-        model_kwargs={'device': 'cpu'},
-        encode_kwargs=encode_kwargs
-    )
+    #embeddings = HuggingFaceBgeEmbeddings(
+    #    model_name=model_name,
+    #    model_kwargs={'device': 'cpu'},
+    #    encode_kwargs=encode_kwargs
+    #)
     vectorstore = Qdrant(client=client, embeddings=embeddings, collection_name="rag")
     llm = chat_model
     qa_prompt=set_custom_prompt()
